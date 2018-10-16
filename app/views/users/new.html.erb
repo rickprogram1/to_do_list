@@ -1,2 +1,18 @@
-<h1>Sign up</h1>
-<p>フォーム</p>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <div class="center jumbotron jumbotron-extend">
+      <h1>Sign up</h1>
+      <%= form_for(@user) do |f| %>
+        <%= render 'shared/error_messages' %>
+
+        <%= f.text_field :name, placeholder: "Username", class: 'form-control' %>
+
+        <%= f.password_field :password, placeholder: "Password", class: 'form-control' %>
+
+        <%= f.password_field :password_confirmation, placeholder: "Confirmation", class: 'form-control' %>
+        
+        <%= f.submit "Create my account", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>
