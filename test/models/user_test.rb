@@ -27,7 +27,7 @@ class UserTest < ActiveSupport::TestCase
     assert_not duplicate_user.valid?
   end
 
-  test "name addresses should be saved as lower-case" do
+  test "name should be saved as lower-case" do
     mixed_case_name = "ExAMPle NamE"
     @user.name = mixed_case_name
     @user.save
