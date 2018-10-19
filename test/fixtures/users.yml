@@ -1,3 +1,22 @@
 michael:
   name: michael
   password_digest: <%= User.digest('password') %>
+  admin: true
+
+archer:
+  name: sterling archer
+  password_digest: <%= User.digest('password') %>
+
+lana:
+  name: lana kane
+  password_digest: <%= User.digest('password') %>
+
+malory:
+  name: malory archer
+  password_digest: <%= User.digest('password') %>
+
+<% 30.times do |n| %>
+user_<%= n %>:
+  name:  <%= "User #{n}" %>
+  password_digest: <%= User.digest('password') %>
+<% end %>

@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     user = User.find_by(name: params[:session][:name].downcase)
     if user && user.authenticate(params[:session][:password])
       log_in user # ユーザーにログインする
-      redirect_to user # redirect_to user_url(user)に変換される
+      redirect_back_or user # 
     else
       # エラーメッセージを作成する
       flash.now[:danger] = 'Invalid name/password combination'
