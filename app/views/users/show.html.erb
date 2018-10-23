@@ -1,9 +1,27 @@
 <div class="row">
 	<aside class="col-md-4">
 		<section class="user_info">
-			<h1>
+      <% if logged_in? %>
+      <section class="user_info">
+        <%= render 'shared/user_info' %>
+      </section>
+      <section class="task_form">
+        <%= render 'shared/task_form' %>
+      </section>
+      <% else %>
+      <h1>
   			<%= @user.name %>
 			</h1>
-		</section>
-	</aside>
+      <% end %>
+      </aside>
+      </section>
+	<div class="col-md-8">
+    <% if @user.tasks.any? %>
+      <h3>Tasks (<%= @user.tasks.count %>)</h3>
+      <ol class="tasks">
+        <%= render @tasks %>
+      </ol>
+      <%= will_paginate @tasks %>
+    <% end %>
+  </div>
 </div>
