@@ -1,0 +1,15 @@
+<h1>All tasks</h1>
+
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+    <div class="center jumbotron jumbotron-extend">
+			<%= will_paginate %>
+
+			<ul class="users">
+  			<%= render @tasks %>
+			</ul>
+
+			<%= will_paginate %>
+		</div>
+	</div>
+</div>

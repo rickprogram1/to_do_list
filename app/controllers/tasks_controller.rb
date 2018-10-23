@@ -1,6 +1,10 @@
 class TasksController < ApplicationController
-	before_action :logged_in_user, only: [:create, :destroy]
+	before_action :logged_in_user, only: [:index, :create, :destroy]
 	before_action :correct_user, only: :destroy
+
+	def index
+		@tasks = Task.paginate(page: params[:page])
+	end
 
 	def create
 		@task = current_user.tasks.build(task_params)

@@ -1,9 +1,15 @@
 <h1>All users</h1>
 
-<%= will_paginate %>
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+    <div class="center jumbotron jumbotron-extend">
+      <%= will_paginate %>
 
-<ul class="users">
-  <%= render @users %>
-</ul>
+      <ul class="users">
+        <%= render @users %>
+      </ul>
 
-<%= will_paginate %>
+      <%= will_paginate %>
+    </div>
+  </div>
+</div>
