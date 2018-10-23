@@ -9,6 +9,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @tasks = @user.tasks.paginate(page: params[:page])
+    # @task = current_user.tasks.build if logged_in?
+    @task = @user.tasks.build
   end
 
   def new
@@ -52,15 +55,6 @@ class UsersController < ApplicationController
     end
 
     # beforeアクション
-
-    # ログイン済みユーザーかどうか確認
-    def logged_in_user
-      unless logged_in?
-        store_location
-        flash[:danger] = "Please log in."
-        redirect_to login_url
-      end
-    end
 
     # 正しいユーザーかどうか確認
     def correct_user
