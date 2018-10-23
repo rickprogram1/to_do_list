@@ -1,5 +1,5 @@
 <li id="task-<%= task.id %>">
-  <span class="user"><%= link_to task.user.name, task.user %></span>
+  <%# <span class="user"><%= link_to task.user.name, task.user ></span> %>
   <span class="content"><%= task.content %></span>
   <span class="timestamp">
     Posted <%= time_ago_in_words(task.created_at) %> ago.
