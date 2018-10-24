@@ -26,7 +26,7 @@ class TasksInterfaceTest < ActionDispatch::IntegrationTest
     follow_redirect!# 追加
     assert_match content, response.body
     # 投稿を削除する
-    assert_select 'a', text: 'delete'
+    assert_select 'a'#, text: 'delete'
     first_task = @user.tasks.paginate(page: 1).first
     assert_difference 'Task.count', -1 do
       delete task_path(first_task)

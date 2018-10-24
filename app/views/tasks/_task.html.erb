@@ -1,11 +1,14 @@
 <li id="task-<%= task.id %>">
   <%# <span class="user"><%= link_to task.user.name, task.user ></span> %>
-  <span class="content"><%= task.content %></span>
+  <span class="content"><%= task.content %>
+		<% if current_user?(task.user) %>
+      <%= link_to task, method: :delete, data: { confirm: "You sure?" } do %>
+				<i class="far fa-times-circle"></i>
+			<% end %>
+    <% end %>
+	</span>
   <span class="timestamp">
     Posted <%= time_ago_in_words(task.created_at) %> ago.
-    <% if current_user?(task.user) %>
-      <%= link_to "delete", task, method: :delete, data: { confirm: "You sure?" } %>
-    <% end %>
   </span>
     <%= render "likes/like", task: task %>
 </li>
