@@ -10,13 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181022003714) do
+ActiveRecord::Schema.define(version: 20181023073054) do
+
+  create_table "likes", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "task_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["task_id"], name: "index_likes_on_task_id"
+    t.index ["user_id", "task_id"], name: "index_likes_on_user_id_and_task_id", unique: true
+    t.index ["user_id"], name: "index_likes_on_user_id"
+  end
 
   create_table "tasks", force: :cascade do |t|
     t.text "content"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "likes_count"
     t.index ["user_id", "created_at"], name: "index_tasks_on_user_id_and_created_at"
     t.index ["user_id"], name: "index_tasks_on_user_id"
   end

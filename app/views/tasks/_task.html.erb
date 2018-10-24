@@ -7,4 +7,5 @@
       <%= link_to "delete", task, method: :delete, data: { confirm: "You sure?" } %>
     <% end %>
   </span>
+    <%= render "likes/like", task: task %>
 </li>

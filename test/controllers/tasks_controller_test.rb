@@ -17,7 +17,7 @@ class TasksControllerTest < ActionDispatch::IntegrationTest
     assert_template 'tasks/index'
     assert_select 'div.pagination'
     Task.paginate(page: 1).each do |task|
-      assert_select 'a[href=?]', user_path(task.user), text: task.user.name
+      assert_select 'a[href=?]', users_path
     end 
   end
 

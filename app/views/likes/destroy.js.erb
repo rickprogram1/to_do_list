@@ -1,0 +1,1 @@
+$("#task-<%= @task.id %> .like").html("<%= escape_javascript(render "likes/like", task: @task) %>");
