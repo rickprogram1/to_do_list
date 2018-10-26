@@ -1,5 +1,8 @@
+<h1><%= @user.name %></h1>
+
 <div class="row">
-	<aside class="col-md-4">
+  <div class="col-md-10 col-md-offset-1">
+    <div class="center jumbotron jumbotron-extend">
 		<section class="user_info">
       <% if logged_in? %>
         <section class="user_info">
@@ -8,20 +11,19 @@
         <section class="task_form">
           <%= render 'shared/task_form' %>
         </section>
-      <% else %>
-        <h1>
+      <%#<% else %>
+        <%#<h1>
   			  <%= @user.name %>
-			  </h1>
+			  <%#</h1> %>
       <% end %>
     </section>
-  </aside>
-	<div class="col-md-8">
-    <% if @user.tasks.any? %>
-      <h3>Tasks (<%= @user.tasks.count %>)</h3>
-      <ol class="tasks">
-        <%= render @tasks %>
-      </ol>
-      <%= will_paginate @tasks %>
-    <% end %>
+      <% if @user.tasks.any? %>
+        <h3>Tasks (<%= @user.tasks.count %>)</h3>
+        <ol class="tasks">
+          <%= render @tasks %>
+        </ol>
+        <%= will_paginate @tasks %>
+        <% end %>
+    </div>
   </div>
 </div>
