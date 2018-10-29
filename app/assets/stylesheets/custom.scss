@@ -279,35 +279,47 @@ input {
 
 /* tasks */
 
+section.tasks {
+  margin-top: 50px;
+}
+
 .tasks {
   list-style: none;
+  text-align: center;
   padding: 0;
   li {
-    padding: 10px 0;
-    border-top: 1px solid #eaeaea;
-  }
-  .user {
-    margin-top: 5em;
-    padding-top: 0;
+    padding: 15px 0;
   }
   .content {
     display: block;
-    margin-left: 60px;
-    img {
-      display: block;
-      padding: 5px 0;
-    }
+    margin: 10px;
   }
-  .timestamp {
-    color: $gray-light;
-    display: block;
-    margin-left: 60px;
+}
+
+.task-counter {
+  list-style-type: none;
+  text-align: center;
+  border-bottom: 1px solid #eaeaea;
+  li {
+    font-size: 1.5em;
+    font-weight: bold;
+    letter-spacing: 1px;
+    display: inline-block;
+    padding: 20px 30px;
   }
-  .gravatar {
-    float: left;
-    margin-right: 10px;
-    margin-top: 5px;
-  }
+}
+
+#task_text_body {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+/* 打ち消し線 */
+
+.strikethrough {
+  text-decoration: line-through;
+  font-style: italic;
+  color: #bbb;
 }
 
 aside {
@@ -322,13 +334,6 @@ span.picture {
   input {
     border: 0;
   }
-}
-
-/*Checkboxes styles*/
-
-.strikethrough:checked + label {
-  text-decoration: line-through;
-  color: #bbb;
 }
 
 /* button */
@@ -360,7 +365,20 @@ span.picture {
   color: white; //ボタンの上にポインタを持ってきたり、クリックしたりした時のテキストの色
 }
 
-.btn-primary.outline {
-  border: 3px solid #bbb; //アウトラインのみのボタンの線の色
-  color: #bbb; //アウトラインのみのボタンのテキストの色
+/* 背景なしボタン */
+
+.transparent_btn {
+  background-color: #fff;
+  width: 32px;
+  text-align: center;
+  &:hover {
+    background-color: #fff;
+  }
+}
+
+/* icon */
+
+.fa-icon {
+  font-size: 1.5em;
+  color: $default3;
 }

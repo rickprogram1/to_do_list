@@ -1,29 +1,20 @@
+<% provide(:iine, @user.likes) %>
+
 <h1><%= @user.name %></h1>
 
 <div class="row">
   <div class="col-md-10 col-md-offset-1">
     <div class="center jumbotron jumbotron-extend">
-		<section class="user_info">
       <% if logged_in? %>
-        <section class="user_info">
-          <%= render 'shared/user_info' %>
-        </section>
+        <%# <span><%= link_to "view my profile", @user %><%#</span> %>
+        <%# <span><%= pluralize(@user.tasks.count, "task") %><%# </span> %>
         <section class="task_form">
           <%= render 'shared/task_form' %>
         </section>
-      <%#<% else %>
-        <%#<h1>
-  			  <%= @user.name %>
-			  <%#</h1> %>
       <% end %>
-    </section>
-      <% if @user.tasks.any? %>
-        <h3>Tasks (<%= @user.tasks.count %>)</h3>
-        <ol class="tasks">
-          <%= render @tasks %>
-        </ol>
-        <%= will_paginate @tasks %>
-        <% end %>
+      <section class="tasks">
+        <%= render 'shared/user_info' %>
+      </section>
     </div>
   </div>
 </div>

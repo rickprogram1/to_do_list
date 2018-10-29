@@ -9,8 +9,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @tasks = @user.tasks.paginate(page: params[:page])
-    # @task = current_user.tasks.build if logged_in?
+    @tasks = @user.tasks.paginate(page: params[:page])# where(done: false).
     @task = @user.tasks.build
   end
 

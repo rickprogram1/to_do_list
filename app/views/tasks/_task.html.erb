@@ -1,16 +1,40 @@
 <li id="task-<%= task.id %>">
   <%# <span class="user"><%= link_to task.user.name, task.user %><%# </span> %>
   <span class="content"><%# <%= task.content %>
-		<% if current_user?(task.user) %>
-			<input name="taskoff" class="strikethrough" value="" type="checkbox">
-      <label for="taskoff"><%= task.content %></label>
-      <%= link_to task, method: :delete, data: { confirm: "You sure?" } do %>
-				<i class="far fa-times-circle fa-fw"></i>
-			<% end %>
-		<% else %>
-			<%= task.content %>
-    <% end %>
-	</span>
+  	<% if current_user?(task.user) %>
+    	<% if task.done %>
+      	<%= form_for(task, method: :put, remote: true) do |f| %>
+        	<%= button_tag(class: "btn transparent_btn") do %>
+          	<i class="fas fa-check-circle fa-icon"></i>
+        	<% end %>
+      	<span class="strikethrough">
+        	<span id="task_text_body"><%= task.content %></span>
+      	</span>
+      	<i class="fas fa-star fa-fw"></i><%= task.likes.count %>
+				<!-- Task削除ボタン -->
+      	<%= link_to task, method: :delete, data: { confirm: "You sure?" } do %>
+        	<i class="far fa-times-circle fa-icon"></i>
+      	<% end %>
+    	<% end %>
+
+		<!-- タスク未完了 -->
+    <% else %>
+      <%= form_for(task, method: :put, remote: true) do |f| %>
+      	<%= button_tag(class: "btn transparent_btn") do %>
+        	<i class="far fa-check-circle fa-icon"></i>
+      	<% end %>
+      	<span id=task_text_body><%= task.content %></span>
+      	<i class="fas fa-star fa-fw"></i><%= task.likes.count %>
+      <!-- Task削除ボタン -->
+      	<%= link_to task, method: :delete, data: { confirm: "You sure?" } do %>
+        	<i class="far fa-times-circle fa-icon"></i>
+      	<% end %>
+    	<% end %>
+  	<% end %>
+	<% else %>
+		<%= task.content %>
+	<% end %>
+</span>
   <%# <span class="timestamp">
     Posted <%= time_ago_in_words(task.created_at) > ago.
   </span> %>

@@ -3,7 +3,7 @@ class TasksController < ApplicationController
 	before_action :correct_user, only: :destroy
 
 	def index
-		@tasks = Task.paginate(page: params[:page])
+		@tasks = Task.where(done: false).paginate(page: params[:page])
 	end
 
 	def create
@@ -18,6 +18,30 @@ class TasksController < ApplicationController
 			@tasks = @user.tasks.paginate(page: params[:page])
 			render 'users/show'
 		end
+	end
+
+	def update
+		@task = current_user.tasks.find(params[:id])
+		#未チェックの場合
+		unless @task.done
+		  @task.update_attributes(done: true)
+		  # flash[:success] = "Task done!"
+			#Ajaxリクエスト対応
+			respond_to do |format|
+				format.html { redirect_to request.referrer || root_url }
+				format.js
+		  	end
+		#チェック済みの場合
+		else
+			@task.update_attributes(done: false)
+			#flash[:error] = "Task un done!"
+			#Ajaxリクエスト対応
+			respond_to do |format|
+				format.html { redirect_to request.referrer || root_url }
+				format.js
+	  		end
+		end
+		#redirect_to request.referrer || root_url
 	end
 	
 	def destroy

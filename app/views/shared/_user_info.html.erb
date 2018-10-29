@@ -1,2 +1,12 @@
-<%# <span><%= link_to "view my profile", @user %><%#</span> %>
-<span><%= pluralize(@user.tasks.count, "task") %></span>
+<% if @user.tasks.any? %>
+	<ul class="task-counter">
+  	<li>Total : <%= @user.tasks.count %></li>
+		<li>Remaining : <%= @user.tasks.where(done: false).count %></li>
+		<li>Done : <%= @user.tasks.where(done: true).count %></li>
+		<%# <li>like (<%= @user.likes.count %><%# )</li> %>
+	</ul>
+    <ol class="tasks">
+      <%= render @tasks %>
+    </ol>
+  <%= will_paginate @tasks %>
+<% end %>
