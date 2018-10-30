@@ -22,6 +22,7 @@ class TasksController < ApplicationController
 
 	def update
 		@task = current_user.tasks.find(params[:id])
+		@user = current_user
 		#未チェックの場合
 		unless @task.done
 		  @task.update_attributes(done: true)

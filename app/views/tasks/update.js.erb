@@ -1,1 +1,4 @@
 $("#task-<%= @task.id %>").html("<%= escape_javascript(render"tasks/task", task: @task) %>");
+$(".task_total").html('<%= @user.tasks.count %>');
+$(".task_remaining").html('<%= @user.tasks.where(done: false).count %>');
+$(".task_done").html('<%= @user.tasks.where(done: true).count %>');

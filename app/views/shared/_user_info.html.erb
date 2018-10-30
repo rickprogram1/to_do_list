@@ -1,9 +1,9 @@
 <% if @user.tasks.any? %>
 	<ul class="task-counter">
-  	<li>Total : <%= @user.tasks.count %></li>
-		<li>Remaining : <%= @user.tasks.where(done: false).count %></li>
-		<li>Done : <%= @user.tasks.where(done: true).count %></li>
-		<%# <li>like (<%= @user.likes.count %><%# )</li> %>
+  	<li>Total : <span class="task_total"><%= @user.tasks.count %></li></span>
+		<li>Remaining : <span class="task_remaining"><%= @user.tasks.where(done: false).count %></li></span>
+		<li>Done : <span class="task_done"><%= @user.tasks.where(done: true).count %></li></span>
+		<%# <li>like : <%= @user.tasks.likes.count %><%# </li> %>
 	</ul>
     <ol class="tasks">
       <%= render @tasks %>
