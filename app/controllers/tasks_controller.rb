@@ -28,7 +28,7 @@ class TasksController < ApplicationController
 		  # flash[:success] = "Task done!"
 			#Ajaxリクエスト対応
 			respond_to do |format|
-				format.html { redirect_to request.referrer || root_url }
+				format.html { redirect_to @user || root_url }
 				format.js
 		  	end
 		#チェック済みの場合
@@ -37,7 +37,7 @@ class TasksController < ApplicationController
 			#flash[:error] = "Task un done!"
 			#Ajaxリクエスト対応
 			respond_to do |format|
-				format.html { redirect_to request.referrer || root_url }
+				format.html { redirect_to @user || root_url }
 				format.js
 	  		end
 		end
