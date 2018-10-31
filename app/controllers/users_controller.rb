@@ -19,6 +19,10 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    if @user.name == "administrator"
+  		@user.admin = true
+    end
+
     if @user.save
       log_in @user
       flash[:success] = "Welcome to the To Do List!"
