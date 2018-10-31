@@ -72,6 +72,7 @@ h2 {
 p {
   font-size: 1.1em;
   line-height: 1.7em;
+  margin-top: 30px;
 }
 
 /* jumbotron */
@@ -185,6 +186,10 @@ footer {
       color: #fff;
     }
   }
+  small {
+    font-size: 1em;
+    float: right;
+  }
 }
 
 /* miscellaneous */
@@ -247,14 +252,30 @@ section.tasks {
 
 .tasks {
   list-style: none;
+  margin-left: 10px;
   padding: 0px;
   li {
     padding: 10px 0;
   }
   .content {
-    display: block;
+    display: inline-block;
+    vertical-align:middle;
+    text-align: center;
     margin: 10px 0;
   }
+  .task-complete {
+    text-decoration: line-through;
+    font-style: italic;
+    color: #bbb;
+  }
+}
+
+#task_text_body {
+  text-align: center;
+  vertical-align:middle;
+  padding-left: 15px;
+  padding-right: 15px;
+  font-size: 1.2em;
 }
 
 .task-counter {
@@ -271,31 +292,13 @@ section.tasks {
   }
 }
 
-#task_text_body {
-  padding-left: 15px;
-  padding-right: 15px;
+section.task_form {
+  text-align: center;
+  vertical-align: middle;
 }
 
-/* 打ち消し線 */
-
-.strikethrough {
-  text-decoration: line-through;
-  font-style: italic;
-  color: #bbb;
-}
-
-aside {
-  textarea {
-    height: 100px;
-    margin-bottom: 5px;
-  }
-}
-
-span.picture {
-  margin-top: 10px;
-  input {
-    border: 0;
-  }
+.all-tasks {
+  display: inline-block;
 }
 
 /* button */
@@ -327,6 +330,34 @@ span.picture {
   color: white; //ボタンの上にポインタを持ってきたり、クリックしたりした時のテキストの色
 }
 
+.btn-primary2 {
+  display: inline-block;
+    margin-left: 10px;
+    height: 50px;
+    width: 50px;
+    background-color: #fff;
+    text-align: center;
+    color: $default3;
+    border: solid 2px $default3;
+    border-radius: 50%;
+    transition: .2s;
+}
+
+.btn-primary2:hover, .btn-primary2:focus, 
+.btn-primary2:active, .btn-primary2:active:focus, .btn-primary2:active:hover, .btn-primary2:active.focus,
+.btn-primary2.active, .btn-primary2.active:focus, .btn-primary2.active:hover, .btn-primary2.active.focus,
+.open > .dropdown-toggle.btn-primary2, 
+.open > .dropdown-toggle.btn-primary2:hover,
+.open > .dropdown-toggle.btn-primary2:focus, 
+.open > .dropdown-toggle.btn-primary2.focus,
+.btn-primary2.disabled:hover, .btn-primary2[disabled]:hover, fieldset[disabled] .btn-primary2:hover,
+.btn-primary2.disabled:focus, .btn-primary2[disabled]:focus, fieldset[disabled] .btn-primary2:focus,
+.btn-primary2.disabled.focus, .btn-primary2[disabled].focus, fieldset[disabled] .btn-primary2.focus {
+  background: $default3;
+  border: solid 2px $default3;
+  color: white; //ボタンの上にポインタを持ってきたり、クリックしたりした時のテキストの色
+}
+
 /* 背景なしボタン */
 
 .transparent_btn {
@@ -341,6 +372,19 @@ span.picture {
 /* icon */
 
 .fa-icon {
+  vertical-align: middle;
   font-size: 1.5em;
   color: $default3;
+}
+.fa-delete {
+  vertical-align: middle;
+  font-size: 1.5em;
+  color: $default3;
+  margin-left: 10px;
+}
+.fa-iine {
+  margin-right: 3px
+}
+.fa-post {
+  font-size: 1.2em;
 }

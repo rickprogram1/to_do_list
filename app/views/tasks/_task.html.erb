@@ -7,13 +7,12 @@
         	<%= button_tag(class: "btn transparent_btn") do %>
           	<i class="fas fa-check-circle fa-icon"></i>
         	<% end %>
-      	<span class="strikethrough">
+      	<span class="task-complete">
         	<span id="task_text_body"><%= task.content %></span>
-      	</span>
-      	<i class="fas fa-star fa-fw"></i><%= task.likes.count %>
+				</span>
 				<!-- Task削除ボタン -->
       	<%= link_to task, method: :delete, data: { confirm: "You sure?" } do %>
-        	<i class="far fa-times-circle fa-icon"></i>
+        	<i class="far fa-times-circle fa-delete"></i>
       	<% end %>
     	<% end %>
 
@@ -23,20 +22,19 @@
       	<%= button_tag(class: "btn transparent_btn") do %>
         	<i class="far fa-check-circle fa-icon"></i>
       	<% end %>
-      	<span id=task_text_body><%= task.content %></span>
-      	<i class="fas fa-star fa-fw"></i><%= task.likes.count %>
-      <!-- Task削除ボタン -->
+      	<span id="task_text_body"><%= task.content %></span>
+      		<i class="fas fa-star fa-iine"></i><%= task.likes.count %>
+      	<!-- Task削除ボタン -->
       	<%= link_to task, method: :delete, data: { confirm: "You sure?" } do %>
-        	<i class="far fa-times-circle fa-icon"></i>
+        	<i class="far fa-times-circle fa-delete"></i>
       	<% end %>
     	<% end %>
   	<% end %>
-	<% else %>
-		<%= task.content %>
-	<% end %>
+		<% else %>
+			<div class="all-tasks">
+				<span id="task_text_body"><%= task.content %></span>
+				<%= render "likes/like", task: task %>
+			</div>
+		<% end %>
 </span>
-  <%# <span class="timestamp">
-    Posted <%= time_ago_in_words(task.created_at) > ago.
-  </span> %>
-	<%= render "likes/like", task: task %>
 </li>

@@ -4,7 +4,7 @@ class Task < ApplicationRecord
   has_many :iine_users, through: :likes, source: :user
   default_scope -> { order(created_at: :desc) }
   validates :user_id, presence: true
-  validates :content, presence: true, length: { maximum: 140 }
+  validates :content, presence: true, length: { maximum: 30 }
 
   # タスクをいいねする
   def iine(user)
