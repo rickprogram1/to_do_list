@@ -7,15 +7,14 @@
         	<%= button_tag(class: "btn transparent_btn") do %>
           	<i class="fas fa-check-circle fa-icon"></i>
         	<% end %>
-      	<span class="task-complete">
-        	<span id="task_text_body"><%= task.content %></span>
-				</span>
-				<!-- Task削除ボタン -->
-      	<%= link_to task, method: :delete, data: { confirm: "You sure?" } do %>
-        	<i class="far fa-times-circle fa-delete"></i>
-      	<% end %>
+      		<span class="task-complete">
+        		<span id="task_text_body"><%= task.content %></span>
+					</span>
+					<!-- Task削除ボタン -->
+      		<%= link_to task, method: :delete, data: { confirm: "You sure?" } do %>
+        		<i class="far fa-times-circle fa-delete"></i>
+      		<% end %>
     	<% end %>
-
 		<!-- タスク未完了 -->
     <% else %>
       <%= form_for(task, method: :put, remote: true) do |f| %>
