@@ -23,7 +23,7 @@ html {
 }
 
 body {
-  margin-bottom: 80px;
+  margin-bottom: 125px;
   padding-top: 60px;
   font-family: 'Imprima', sans-serif;
   font-family: 'Comfortaa', cursive;
@@ -75,15 +75,13 @@ h2 {
 }
 
 p {
-  font-size: 1.1em;
-  line-height: 1.7em;
-  margin-top: 30px;
+  font-size: 1em;
 }
 
 /* jumbotron */
 
 .jumbotron-extend {
-  background-color: #fff;
+	background-color: #fff;
 }
 
 
@@ -176,7 +174,7 @@ $dropDown       : false;
 
 footer {
   position: absolute;
-  bottom: 0; 
+	bottom: 0; 
   width: 100%;
   height: 80px;
   background-color: $default1;
@@ -266,11 +264,8 @@ section.tasks {
   margin-top: 50px;
 }
 
-
-
 .tasks {
   list-style: none;
-  margin-left: 10px;
   padding: 10px 0x;
   li {
     padding: 10px 0;
@@ -317,6 +312,10 @@ section.task_form {
 
 .all-tasks {
   display: inline-block;
+}
+
+.like {
+	display: inline-block;
 }
 
 /* button */
@@ -380,7 +379,8 @@ section.task_form {
 
 .transparent_btn {
   background-color: #fff;
-  width: 32px;
+	width: 32px;
+	vertical-align: middle;
   text-align: center;
   &:hover {
     background-color: #fff;
@@ -394,17 +394,29 @@ section.task_form {
   font-size: 1.5em;
   color: $default3;
 }
+
 .fa-delete {
+	text-align: center;
   vertical-align: middle;
   font-size: 1.5em;
   color: $default3;
   margin-left: 10px;
 }
+
 .fa-iine {
-  margin-right: 3px
+	text-align: center;
+  vertical-align: middle;
+	margin-right: 3px;
+	font-size: 1.1em;
 }
+
 .fa-post {
   text-align: center;
   vertical-align: middle;
   font-size: 1.2em;
+}
+.fa-footer{
+	font-size: 1.5em;
+	text-align: center;
+  vertical-align: middle;
 }

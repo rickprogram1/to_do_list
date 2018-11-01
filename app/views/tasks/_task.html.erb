@@ -14,26 +14,26 @@
       		<%= link_to task, method: :delete, data: { confirm: "You sure?" } do %>
         		<i class="far fa-times-circle fa-delete"></i>
       		<% end %>
-    	<% end %>
-		<!-- タスク未完了 -->
-    <% else %>
-      <%= form_for(task, method: :put, remote: true) do |f| %>
-      	<%= button_tag(class: "btn transparent_btn") do %>
-        	<i class="far fa-check-circle fa-icon"></i>
-      	<% end %>
-      	<span id="task_text_body"><%= task.content %></span>
-      		<i class="fas fa-star fa-iine"></i><%= task.likes.count %>
-      	<!-- Task削除ボタン -->
-      	<%= link_to task, method: :delete, data: { confirm: "You sure?" } do %>
-        	<i class="far fa-times-circle fa-delete"></i>
-      	<% end %>
-    	<% end %>
-  	<% end %>
+    		<% end %>
+			<!-- タスク未完了 -->
+    	<% else %>
+      	<%= form_for(task, method: :put, remote: true) do |f| %>
+      		<%= button_tag(class: "btn transparent_btn") do %>
+        		<i class="far fa-check-circle fa-icon"></i>
+      		<% end %>
+      		<span id="task_text_body"><%= task.content %></span>
+      			<i class="fas fa-star fa-iine"><%= task.likes.count %></i>
+      		<!-- Task削除ボタン -->
+      		<%= link_to task, method: :delete, data: { confirm: "You sure?" } do %>
+        		<i class="far fa-times-circle fa-delete"></i>
+      		<% end %>
+    		<% end %>
+  		<% end %>
 		<% else %>
 			<div class="all-tasks">
 				<span id="task_text_body"><%= task.content %></span>
 				<%= render "likes/like", task: task %>
 			</div>
 		<% end %>
-</span>
+	</span>
 </li>
