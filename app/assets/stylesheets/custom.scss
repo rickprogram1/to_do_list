@@ -215,16 +215,16 @@ input, select, .uneditable-input {
   @include box_sizing;
 }
 
-.form-control:focus, input:hover, input:active, textarea:hover, textarea:active{
-  outline: 0;
-}
-
 textarea {
   display: inline-block;
   vertical-align: middle;
   width: 50%;
   height: 45px;
   padding: 0.5em 1em;
+}
+
+.form-control:focus, input:hover, input:active, textarea:hover, textarea:active{
+  outline: 0;
 }
 
 input {
