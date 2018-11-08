@@ -1,7 +1,7 @@
 <li id="task-<%= task.id %>">
-  <%# <span class="user"><%= link_to task.user.name, task.user %><%# </span> %>
-  <span class="content"><%# <%= task.content %>
+  <span class="content">
   	<% if current_user?(task.user) %>
+			<!-- Task完了済み　-->
     	<% if task.done %>
       	<%= form_for(task, method: :put, remote: true) do |f| %>
         	<%= button_tag(class: "btn transparent_btn") do %>
@@ -23,7 +23,10 @@
       		<% end %>
       		<span id="task_text_body"><%= task.content %></span>
       			<i class="fas fa-star fa-iine"><%= task.likes.count %></i>
-      		<!-- Task削除ボタン -->
+      		<%= link_to edit_task_path(task) do %>
+						<i class="far fa-edit fa-task_edit"></i>
+					<% end %>
+					<!-- Task削除ボタン -->
       		<%= link_to task, method: :delete, data: { confirm: "You sure?" } do %>
         		<i class="far fa-times-circle fa-delete"></i>
       		<% end %>

@@ -2,8 +2,6 @@
   <span class="like">
     <% if task.iine?(current_user) %>
       <%= form_for(task.likes.find_by(user_id: current_user.id), method: :delete, remote: true) do |f| %>
-        <%# <%= button_tag(class: "btn btn-default btn-xs") do %>
-          <%# <%= content_tag :span, "#{task.likes_count}", class: "glyphicon glyphicon-star" %>
         <%= button_tag(class: "btn transparent_btn") do %>
           <i class="fas fa-star fa-iine"><%= task.likes_count %></i>
         <% end %>
@@ -11,8 +9,6 @@
     <% else %>
       <%= form_for(task.likes.build, remote: true) do |f| %>
         <div><%= hidden_field_tag :task_id, task.id %></div>
-        <%# <%= button_tag(class: "btn btn-default btn-xs") do %>
-          <%# <%= content_tag :span, "#{task.likes_count}", class: "glyphicon glyphicon-star-empty" %>
         <%= button_tag(class: "btn transparent_btn") do %>
           <i class="far fa-star fa-iine"><%= task.likes_count %></i>
         <% end %>

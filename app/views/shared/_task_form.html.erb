@@ -1,7 +1,16 @@
 <%= form_for(@task) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
-    <%= f.text_area :content, placeholder: "Add your task", class: "form-inline" %>
+  <%= f.text_area :content, placeholder: "Add your task" %>
   <%= button_tag type: "submit", class: "btn btn-primary2" do %>
-   <i class="fas fa-plus fa-post"></i>
+    <i class="fas fa-plus fa-post"></i>
   <% end %>
+  <ul class="radio">
+    <li>priority : </li>
+		<li><%= f.radio_button :priority, 3, class: "priority" %>
+    <%= f.label :priority, "high", value: 3 %></li>
+  	<li><%= f.radio_button :priority, 2, class: "priority" %>
+    <%= f.label :priority, "middle", value: 2 %></li>
+  	<li><%= f.radio_button :priority, 1, class: "priority" %>
+    <%= f.label :priority, "low", value: 1 %></li>
+  </ul>
 <% end %>
