@@ -9,7 +9,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @tasks = @user.tasks.paginate(page: params[:page])# where(done: false).
+    @tasks = @user.tasks.paginate(page: params[:page])
     @task = @user.tasks.build
   end
 
@@ -39,7 +39,6 @@ class UsersController < ApplicationController
     if @user.update_attributes(user_params)
       flash[:success] = "Profile updated"
       redirect_to @user
-      # 更新した場合を扱う
     else
       render 'edit'
     end

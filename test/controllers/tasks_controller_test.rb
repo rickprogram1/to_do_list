@@ -36,11 +36,11 @@ class TasksControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should redirect destroy for wrong task" do
-  log_in_as(users(:michael))
-  task = tasks(:ants)
-	assert_no_difference 'Task.count' do
-		delete task_path(task)
-	end
-	assert_redirected_to root_url
+    log_in_as(users(:michael))
+    task = tasks(:ants)
+	  assert_no_difference 'Task.count' do
+		  delete task_path(task)
+	  end
+	  assert_redirected_to root_url
 	end
 end

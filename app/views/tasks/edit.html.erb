@@ -1,0 +1,13 @@
+<h1>edit task</h1>
+
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+    <div class="jumbotron jumbotron-extend">
+			<% if logged_in? %>
+				<section class="task_form">
+					<%= render "shared/task_form" %>
+				</section>
+			<% end %>
+    </div>
+	</div>
+</div>

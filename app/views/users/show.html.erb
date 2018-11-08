@@ -4,8 +4,6 @@
   <div class="col-md-10 col-md-offset-1">
     <div class="jumbotron jumbotron-extend">
       <% if logged_in? %>
-        <%# <span><%= link_to "view my profile", @user %><%#</span> %>
-        <%# <span><%= pluralize(@user.tasks.count, "task") %><%# </span> %>
         <section class="task_form">
           <%= render 'shared/task_form' %>
         </section>

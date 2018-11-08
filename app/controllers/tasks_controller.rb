@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
-	before_action :logged_in_user, only: [:index, :create, :destroy]
-	before_action :correct_user, only: :destroy
+	before_action :logged_in_user, only: [:index, :create, :edit, :destroy]
+	before_action :correct_user, only: [:edit, :destroy]
 
 	def index
 		@tasks = Task.where(done: false).paginate(page: params[:page])
@@ -12,7 +12,6 @@ class TasksController < ApplicationController
 			flash[:success] = "Task created!"
 			redirect_to root_url
 		else
-			# render 'static_pages/home'
 			# task投稿時に失敗で再表示
 			@user = current_user
 			@tasks = @user.tasks.paginate(page: params[:page])
@@ -20,29 +19,34 @@ class TasksController < ApplicationController
 		end
 	end
 
+	def edit
+	end
+
 	def update
 		@task = current_user.tasks.find(params[:id])
 		@user = current_user
 		#未チェックの場合
-		unless @task.done
+		if !@task.done && request.put?
 		  @task.update_attributes(done: true)
-		  # flash[:success] = "Task done!"
 			#Ajaxリクエスト対応
 			respond_to do |format|
 				format.html { redirect_to @user || root_url }
 				format.js
-		  	end
+			end
+		# editしたとき
+		elsif !@task.done && request.patch?
+			@task.update_attributes(task_params)
+      flash[:success] = "task updated"
+      redirect_to @user || root_url
 		#チェック済みの場合
 		else
 			@task.update_attributes(done: false)
-			#flash[:error] = "Task un done!"
 			#Ajaxリクエスト対応
 			respond_to do |format|
 				format.html { redirect_to @user || root_url }
 				format.js
-	  		end
+			end
 		end
-		#redirect_to request.referrer || root_url
 	end
 	
 	def destroy
@@ -54,7 +58,7 @@ class TasksController < ApplicationController
 	private
 
 		def task_params
-			params.require(:task).permit(:content)
+			params.require(:task).permit(:content, :priority)
 		end
 
 		def correct_user

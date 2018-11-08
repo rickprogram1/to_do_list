@@ -31,8 +31,10 @@ body {
   height: 100%;
   a {
     color: $default3;
+    text-decoration: none;
     &:hover {
-      color: $default3;
+      color: $default2;
+      text-decoration: none;
     }
   }
 }
@@ -163,6 +165,7 @@ $dropDown       : false;
 
 #logo {
   float: left;
+  margin-left: 15px;
   margin-right: 10px;
   font-size: 1.7em;
   font-weight: bold;
@@ -223,7 +226,7 @@ input, select, .uneditable-input {
 textarea {
   display: inline-block;
   vertical-align: middle;
-  width: 50%;
+  width: 60%;
   height: 45px;
   padding: 0.5em 1em;
 }
@@ -236,7 +239,36 @@ input {
   height: auto !important;
 }
 
+section.task_form {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  text-align: center;
+  vertical-align: middle;
+}
+
+ul.radio {
+  margin: 10px auto 15px;
+  padding: 0;
+  width: 80%;
+  display: block;
+  list-style-type: none;
+  li {
+    display: inline;
+    font-size: 1em;
+    margin-right: 1.5em;
+    input.priority {
+      margin: 3px 0 0 -20px;
+      width: 20px;
+    }
+    label {
+      padding: 0;
+    }
+  }
+}
+
 #error_explanation {
+  margin: auto;
   color: red;
   ul {
     color: red;
@@ -266,14 +298,14 @@ input {
 /* tasks */
 
 section.tasks {
-  margin-top: 50px;
+  margin-top: 45px;
 }
 
-.tasks {
+ol.tasks {
   list-style: none;
-  padding: 10px 0x;
+  margin: 0, 40px;
   li {
-    padding: 10px 0;
+   padding: 20px 0;
   }
   .content {
     display: inline-block;
@@ -293,7 +325,7 @@ section.tasks {
   vertical-align: middle;
   padding-left: 15px;
   padding-right: 15px;
-  font-size: 1.2em;
+  font-size: 1.1em;
 }
 
 .task-counter {
@@ -310,11 +342,6 @@ section.tasks {
   }
 }
 
-section.task_form {
-  text-align: center;
-  vertical-align: middle;
-}
-
 .all-tasks {
   display: inline-block;
 }
@@ -327,14 +354,14 @@ section.task_form {
 
 .btn-primary {
   display: inline-block;
-    padding: 0.3em 1em;
-    width: 30%;
-    text-decoration: none;
-    background-color: #fff;
-    color: $default3;
-    border: solid 2px $default3;
-    border-radius: 3px;
-    transition: .4s;
+  padding: 0.3em 1em;
+  width: 30%;
+  text-decoration: none;
+  background-color: #fff;
+  color: $default3;
+  border: solid 2px $default3;
+  border-radius: 3px;
+  transition: .4s;
 }
 
 .btn-primary:hover, .btn-primary:focus, 
@@ -354,15 +381,14 @@ section.task_form {
 
 .btn-primary2 {
   display: inline-block;
-    margin-left: 15px;
-    height: 45px;
-    width: 45px;
-    background-color: #fff;
-    text-align: center;
-    color: $default3;
-    border: solid 2px $default3;
-    border-radius: 50%;
-    transition: .2s;
+  height: 45px;
+  width: 45px;
+  margin-left: 10px;
+  background-color: #fff;
+  color: $default3;
+  border: solid 2px $default3;
+  border-radius: 50%;
+  transition: .2s;
 }
 
 .btn-primary2:hover, .btn-primary2:focus, 
@@ -384,7 +410,8 @@ section.task_form {
 
 .transparent_btn {
   background-color: #fff;
-	width: 32px;
+  padding: 0;
+	width: 1.5em;
 	vertical-align: middle;
   text-align: center;
   &:hover {
@@ -398,6 +425,17 @@ section.task_form {
   vertical-align: middle;
   font-size: 1.5em;
   color: $default3;
+}
+
+.fa-task_edit {
+  text-align: center;
+  vertical-align: middle;
+  font-size: 1.3em;
+  color: $default3;
+  margin-left: 10px;
+  &:hover {
+    color: $default2;
+  }
 }
 
 .fa-delete {
