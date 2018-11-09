@@ -6,7 +6,7 @@
   <% end %>
   <ul class="radio">
     <li>priority : </li>
-		<li><%= f.radio_button :priority, 3, class: "priority" %>
+		<li><%= f.radio_button :priority, 3, checked: true, class: "priority" %>
     <%= f.label :priority, "high", value: 3 %></li>
   	<li><%= f.radio_button :priority, 2, class: "priority" %>
     <%= f.label :priority, "middle", value: 2 %></li>
