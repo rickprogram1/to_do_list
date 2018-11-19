@@ -11,6 +11,10 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @tasks = @user.tasks.paginate(page: params[:page])
     @task = @user.tasks.build
+    @remaining = @user.tasks.where(done: false).paginate(page: params[:page])
+    @done = @user.tasks.where(done: true).paginate(page: params[:page])
+    
+
   end
 
   def new

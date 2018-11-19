@@ -1,42 +1,78 @@
+<!-- taskはローカル変数 -->
 <li id="task-<%= task.id %>">
-  <span class="content">
-  	<% if current_user?(task.user) %>
-			<!-- Task完了済み　-->
-    	<% if task.done %>
-      	<%= form_for(task, method: :put, remote: true) do |f| %>
-        	<%= button_tag(class: "btn transparent_btn") do %>
-          	<i class="fas fa-check-circle fa-icon"></i>
-        	<% end %>
-      		<span class="task-complete">
-        		<span id="task_text_body"><%= task.content %></span>
-					</span>
-					<!-- Task削除ボタン -->
-      		<%= link_to task, method: :delete, data: { confirm: "You sure?" } do %>
-        		<i class="far fa-times-circle fa-delete"></i>
-      		<% end %>
-    		<% end %>
-			<!-- タスク未完了 -->
-    	<% else %>
-      	<%= form_for(task, method: :put, remote: true) do |f| %>
-      		<%= button_tag(class: "btn transparent_btn") do %>
-        		<i class="far fa-check-circle fa-icon"></i>
-      		<% end %>
+  <% if current_user?(task.user) %>
+
+		<!-- Task完了済み　-->
+    <% if task.done %>
+      <%= form_for(task, method: :put, remote: true) do |f| %>
+  			<%= button_tag(class: "btn transparent_btn") do %>
+    			<i class="fas fa-check-circle fa-icon"></i>
+  			<% end %>
+    		<span class="task-complete">
       		<span id="task_text_body"><%= task.content %></span>
-      			<i class="fas fa-star fa-iine"><%= task.likes.count %></i>
-      		<%= link_to edit_task_path(task) do %>
+				</span>
+
+				<!-- Task削除ボタン -->
+  			<%= link_to task, method: :delete, data: { confirm: "You sure?" } do %>
+    			<i class="far fa-times-circle fa-delete"></i>
+  			<% end %>
+			<% end %>
+
+			<!-- Task未完了 -->
+		<% else %>
+      <%= form_for(task, method: :put, remote: true) do |f| %>
+  			<%= button_tag(class: "btn transparent_btn") do %>
+    			<i class="far fa-check-circle fa-icon"></i>
+  			<% end %>
+    			<span id="task_text_body"><%= task.content %></span>
+
+					<!-- いいね表示 -->
+					<i class="far fa-smile fa-iine"><%= task.likes.count %></i>
+
+					<!-- 編集ボタン -->
+    			<%= link_to edit_task_path(task) do %>
 						<i class="far fa-edit fa-task_edit"></i>
 					<% end %>
+
 					<!-- Task削除ボタン -->
-      		<%= link_to task, method: :delete, data: { confirm: "You sure?" } do %>
-        		<i class="far fa-times-circle fa-delete"></i>
-      		<% end %>
-    		<% end %>
-  		<% end %>
-		<% else %>
-			<div class="all-tasks">
+  				<%= link_to task, method: :delete, data: { confirm: "You sure?" } do %>
+    				<i class="far fa-times-circle fa-delete"></i>
+  				<% end %>
+			<% end %>
+
+				<!-- 優先度表示 -->
+				<% if task.priority == 3 %>
+					<div class="priority">
+						<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+					</div>
+				<% elsif task.priority == 2 %>
+					<div class="priority">
+						<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+					</div>
+				<% else %>
+					<div class="priority">
+						<i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+					</div>
+				<% end %>
+			<% end %>
+
+	<% else %>
 				<span id="task_text_body"><%= task.content %></span>
 				<%= render "likes/like", task: task %>
-			</div>
-		<% end %>
-	</span>
+
+				<!-- 優先度表示 -->
+				<% if task.priority == 3 %>
+					<div class="priority">
+						<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+					</div>
+				<% elsif task.priority == 2 %>
+					<div class="priority">
+						<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+					</div>
+				<% else %>
+					<div class="priority">
+						<i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+					</div>
+				<% end %>
+	<% end %>
 </li>

@@ -5,9 +5,11 @@
     <div class="jumbotron jumbotron-extend">
 			<%= will_paginate %>
 
-			<ul class="tasks">
-  			<%= render @tasks %>
-			</ul>
+			<div class="content">
+				<ol class="show">
+  				<%= render @tasks %>
+				</ol>
+			</div>
 
 			<%= will_paginate %>
 		</div>

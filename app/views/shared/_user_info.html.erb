@@ -1,9 +1,9 @@
 <% if @user.tasks.any? %>
-	<ul class="task-counter">
-  	<li>Total : <span class="task_total"><%= @user.tasks.count %></li></span>
-		<li>Remaining : <span class="task_remaining"><%= @user.tasks.where(done: false).count %></li></span>
-		<li>Done : <span class="task_done"><%= @user.tasks.where(done: true).count %></li></span>
-		<li>like : <span class="user_iine">
+	<ul class="task_counter">
+  	<li class="selected"><i class="far fa-file-alt"></i> : <span class="task_total"><%= @user.tasks.count %></li></span>
+		<li><i class="far fa-check-circle"></i> : <span class="task_remaining"><%= @user.tasks.where(done: false).count %></li></span>
+		<li><i class="fas fa-check-circle"></i> : <span class="task_done"><%= @user.tasks.where(done: true).count %></li></span>
+		<li><i class="far fa-smile"></i> : <span class="user_iine">
       <% sum = 0 %>
       <% @user.tasks.each do |task| %>
         <% sum = sum + task.likes_count %>
@@ -12,8 +12,21 @@
       </span>
     </li>
 	</ul>
-    <ol class="tasks">
-      <%= render @tasks %>
-    </ol>
+    <div class="content">
+      <ol class="show">
+        <%= render @tasks %>
+      </ol>
+      <!--
+      <ol>
+        <%= render "shared/remaining" %>
+      </ol>
+      <ol>
+        <%= render "shared/done" %>
+      </ol>
+      <ol>
+        <%= render "shared/liked" %>
+      </ol>
+      -->
+    </div>
   <%= will_paginate @tasks %>
 <% end %>

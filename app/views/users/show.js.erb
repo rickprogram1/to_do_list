@@ -1,0 +1,19 @@
+$(function() {
+ 
+  // ①タブをクリックしたら発動
+  $('.task_counter').click(function() {
+ 
+    // ②クリックされたタブの順番を変数に格納
+    var index = $('.task_counter').index(this);
+ 
+    // ③クリック済みタブのデザインを設定したcssのクラスを一旦削除
+    $('.task_counter').removeClass('selected');
+ 
+    // ④クリックされたタブにクリック済みデザインを適用する
+    $(this).addClass('selected');
+ 
+    // ⑤コンテンツを一旦非表示にし、クリックされた順番のコンテンツのみを表示
+    $('.content ol').removeClass('show').eq(index).addClass('show');
+ 
+  });
+});

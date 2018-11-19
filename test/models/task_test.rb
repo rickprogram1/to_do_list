@@ -4,7 +4,7 @@ class TaskTest < ActiveSupport::TestCase
   
   def setup
     @user = users(:michael)
-    @task = @user.tasks.build(content: "Lorem ipsum")
+    @task = @user.tasks.build(content: "Lorem ipsum", done: "false", priority: 1)
   end
 
   test "should be valid" do
