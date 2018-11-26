@@ -9,10 +9,15 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @tasks = @user.tasks.paginate(page: params[:page])
     @task = @user.tasks.build
-    @remaining = @user.tasks.where(done: false).paginate(page: params[:page])
-    @done = @user.tasks.where(done: true).paginate(page: params[:page])
+    #Totalタブで表示させるデータ（すべてのTask）
+    @tasks = @user.tasks.paginate(page: params[:page])
+    #Remainingタブで表示させるデータ（未完了のTask）
+    @tasks_R = @user.tasks.where(done: false).paginate(page: params[:page])
+    #Doneタブで表示させるデータ（完了済みのTask）
+    @tasks_D = @user.tasks.where(done: true).paginate(page: params[:page])
+    #Likeタブで表示させるデータ（いいねが一回でもされているTask）
+    @tasks_L = @user.tasks.where("likes_count > 0").paginate(page: params[:page])
     
 
   end

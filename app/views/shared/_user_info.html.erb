@@ -1,32 +1,92 @@
+<!-- タブで表示 -->
+<div>
+<ul class="nav nav-tabs" role="tablist">
+
+<li class="active" role="presentation">
+<a aria-controls="tab_total" data-toggle="tab" href="#tab_total"
+role="tab">Total</a>
+</li>
+<li role="presentation">
+<a aria-controls="tab_remaining" data-toggle="tab"
+href="#tab_remaining" role="tab">Remaining</a>
+</li>
+<li role="presentation">
+<a aria-controls="tab_done" data-toggle="tab" href="#tab_done"
+role="tab">Done</a>
+</li>
+<li role="presentation">
+<a aria-controls="tab_like" data-toggle="tab" href="#tab_like"
+role="tab">like</a>
+</li>
+
+</ul>
+
+<div class="tab-content">
+
+<div class="tab-pane active" id="tab_total" role="tabpanel">
+<p>
+
+<!-- Task表示領域 -->
+<div class="col-md-12">
 <% if @user.tasks.any? %>
-	<ul class="task_counter">
-  	<li class="selected"><i class="far fa-file-alt"></i> : <span class="task_total"><%= @user.tasks.count %></li></span>
-		<li><i class="far fa-check-circle"></i> : <span class="task_remaining"><%= @user.tasks.where(done: false).count %></li></span>
-		<li><i class="fas fa-check-circle"></i> : <span class="task_done"><%= @user.tasks.where(done: true).count %></li></span>
-		<li><i class="far fa-smile"></i> : <span class="user_iine">
-      <% sum = 0 %>
-      <% @user.tasks.each do |task| %>
-        <% sum = sum + task.likes_count %>
-      <% end %>
-      <%= sum %>
-      </span>
-    </li>
-	</ul>
-    <div class="content">
-      <ol class="show">
-        <%= render @tasks %>
-      </ol>
-      <!--
-      <ol>
-        <%= render "shared/remaining" %>
-      </ol>
-      <ol>
-        <%= render "shared/done" %>
-      </ol>
-      <ol>
-        <%= render "shared/liked" %>
-      </ol>
-      -->
-    </div>
-  <%= will_paginate @tasks %>
+<h3>Tasks : <span class="task_total"><%= @user.tasks.count %></h3></span>
+<ol class="tasks">
+<%= render @tasks %>
+</ol>
+<%= will_paginate @tasks %>
 <% end %>
+</div>
+
+</p>
+</div>
+
+<div class="tab-pane" id="tab_remaining" role="tabpanel">
+<p>
+
+<!-- Task表示領域 -->
+<div class="col-md-12">
+<% if @tasks_R.any? %>
+<h3>Tasks : <span class="task_remaining"><%= @tasks_R.count %></h3></span>
+<ol class="tasks">
+<%= render @tasks_R %>
+</ol>
+<%= will_paginate @tasks_R %>
+<% end %>
+</div>
+
+</p>
+</div>
+<div class="tab-pane" id="tab_done" role="tabpanel">
+<p>
+
+<!-- Task表示領域 -->
+<div class="col-md-12">
+<% if @tasks_D.any? %>
+<h3>Tasks : <span class="task_done"><%= @tasks_D.count %></h3></span>
+<ol class="tasks">
+<%= render @tasks_D %>
+</ol>
+<%= will_paginate @tasks_D %>
+<% end %>
+</div>
+
+</p>
+</div>
+
+<div class="tab-pane" id="tab_like" role="tabpanel">
+<p>
+
+<!-- Task表示領域 -->
+<div class="col-md-12">
+<% if @tasks_L.any? %>
+<h3>Tasks : <%= @tasks_L.count %></h3>
+<ol class="tasks">
+<%= render @tasks_L %>
+</ol>
+<%= will_paginate @tasks_L %>
+<% end %>
+</div>
+</p>
+</div>
+
+</div>

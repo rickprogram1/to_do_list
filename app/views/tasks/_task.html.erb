@@ -1,4 +1,3 @@
-<!-- taskはローカル変数 -->
 <li id="task-<%= task.id %>">
   <% if current_user?(task.user) %>
 
@@ -24,55 +23,59 @@
   			<%= button_tag(class: "btn transparent_btn") do %>
     			<i class="far fa-check-circle fa-icon"></i>
   			<% end %>
-    			<span id="task_text_body"><%= task.content %></span>
+    		<span id="task_text_body"><%= task.content %></span>
 
-					<!-- いいね表示 -->
-					<i class="far fa-smile fa-iine"><%= task.likes.count %></i>
+				<!-- いいね表示 -->
+				<i class="far fa-smile fa-iine"><%= task.likes.count %></i>
 
-					<!-- 編集ボタン -->
-    			<%= link_to edit_task_path(task) do %>
-						<i class="far fa-edit fa-task_edit"></i>
-					<% end %>
+				<div class="btns">
 
-					<!-- Task削除ボタン -->
-  				<%= link_to task, method: :delete, data: { confirm: "You sure?" } do %>
-    				<i class="far fa-times-circle fa-delete"></i>
-  				<% end %>
-			<% end %>
-
-				<!-- 優先度表示 -->
-				<% if task.priority == 3 %>
-					<div class="priority">
-						<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-					</div>
-				<% elsif task.priority == 2 %>
-					<div class="priority">
-						<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
-					</div>
-				<% else %>
-					<div class="priority">
-						<i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
-					</div>
+				<!-- 編集ボタン -->
+    		<%= link_to edit_task_path(task) do %>
+					<i class="far fa-edit fa-task_edit"></i>
 				<% end %>
+
+				<!-- Task削除ボタン -->
+  			<%= link_to task, method: :delete, data: { confirm: "You sure?" }, class: "delete" do %>
+    			<i class="far fa-times-circle fa-delete"></i>
+  			<% end %>
+				</div>
+		<% end %>
+
+			<!-- 優先度表示 -->
+			<% if task.priority == 3 %>
+				<div class="priority">
+					<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+				</div>
+			<% elsif task.priority == 2 %>
+				<div class="priority">
+					<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+				</div>
+			<% else %>
+				<div class="priority">
+					<i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+				</div>
 			<% end %>
+		<% end %>
 
 	<% else %>
-				<span id="task_text_body"><%= task.content %></span>
-				<%= render "likes/like", task: task %>
 
-				<!-- 優先度表示 -->
-				<% if task.priority == 3 %>
-					<div class="priority">
-						<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-					</div>
-				<% elsif task.priority == 2 %>
-					<div class="priority">
-						<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
-					</div>
-				<% else %>
-					<div class="priority">
-						<i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
-					</div>
-				<% end %>
+		<span id="task_text_body"><%= task.content %></span>
+		<%= render "likes/like", task: task %>
+
+		<!-- 優先度表示 -->
+		<% if task.priority == 3 %>
+			<div class="priority">
+				<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+			</div>
+		<% elsif task.priority == 2 %>
+			<div class="priority">
+				<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+			</div>
+		<% else %>
+			<div class="priority">
+				<i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+			</div>
+		<% end %>
 	<% end %>
 </li>

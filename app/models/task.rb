@@ -4,7 +4,8 @@ class Task < ApplicationRecord
   has_many :iine_users, through: :likes, source: :user
   default_scope -> { order(priority: :desc, created_at: :desc) }
   validates :user_id, presence: true
-  validates :content, presence: true, length: { maximum: 25 }
+  validates :content, presence: true, length: { maximum: 30 }
+  validates :done, inclusion: {in: [true, false]}
   validates :priority, presence: true, numericality: { less_than_or_equal_to: 3 }
 
 

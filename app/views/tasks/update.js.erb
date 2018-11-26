@@ -1,4 +1,10 @@
+//未完了・完了済みタスクのAjax
 $("#task-<%= @task.id %>").html("<%= escape_javascript(render"tasks/task", task: @task) %>");
+$("#tab_remaining #task-<%= @task.id %>").html("<%= escape_javascript(render"tasks/task", task: @task) %>");
+$("#tab_done #task-<%= @task.id %>").html("<%= escape_javascript(render"tasks/task", task: @task) %>");
+$("#tab_like #task-<%= @task.id %>").html("<%= escape_javascript(render"tasks/task", task: @task) %>");
+
+//タスク数表示
 $(".task_total").html('<%= @user.tasks.count %>');
 $(".task_remaining").html('<%= @user.tasks.where(done: false).count %>');
 $(".task_done").html('<%= @user.tasks.where(done: true).count %>');

@@ -14,7 +14,14 @@ class TasksController < ApplicationController
 		else
 			# task投稿時に失敗で再表示
 			@user = current_user
+			#Totalタブで表示させるデータ（すべてのTask）
 			@tasks = @user.tasks.paginate(page: params[:page])
+			#Remainingタブで表示させるデータ（未完了のTask）
+			@tasks_R = @user.tasks.where(done: false).paginate(page: params[:page])
+			#Doneタブで表示させるデータ（完了済みのTask）
+			@tasks_D = @user.tasks.where(done: true).paginate(page: params[:page])
+			#Likeタブで表示させるデータ（いいねが一回でもされているTask）
+			@tasks_L = @user.tasks.where("likes_count > 0").paginate(page: params[:page])
 			render 'users/show'
 		end
 	end
@@ -36,7 +43,7 @@ class TasksController < ApplicationController
 		# editしたとき
 		elsif !@task.done && request.patch?
 			@task.update_attributes(task_params)
-      flash[:success] = "task updated"
+      flash[:success] = "Task updated"
       redirect_to @user || root_url
 		#チェック済みの場合
 		else
