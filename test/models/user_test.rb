@@ -46,7 +46,7 @@ class UserTest < ActiveSupport::TestCase
 
   test "associated tasks should be destroyed" do
     @user.save
-    @user.tasks.create!(content: "Lorem ipsum")
+    @user.tasks.create!(content: "Lorem ipsum", priority: 1)
     assert_difference 'Task.count', -1 do
       @user.destroy
     end

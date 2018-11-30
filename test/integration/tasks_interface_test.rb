@@ -16,9 +16,10 @@ class TasksInterfaceTest < ActionDispatch::IntegrationTest
     end
     assert_select 'div#error_explanation'
     # 有効な送信
-    content = "This task really ties the room together"
+    content = "test test test"
+    priority = 1
     assert_difference 'Task.count', 1 do
-      post tasks_path, params: {task: { content: content } }
+      post tasks_path, params: {task: { content: content, priority: priority} }
     end
     assert_redirected_to root_url
     follow_redirect!

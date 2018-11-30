@@ -11,10 +11,6 @@ class UsersProfileTest < ActionDispatch::IntegrationTest
 		get user_path(@user)
 		assert_template 'users/show'
 		assert_select 'h1', text: @user.name
-		assert_match @user.tasks.count, response.body
-		assert_select 'div.pagination'
-		@user.tasks.paginate(page: 1).each do |task|
-			assert_match task.content,response.body
-		end
+		assert_select 'div.row'
 	end
 end

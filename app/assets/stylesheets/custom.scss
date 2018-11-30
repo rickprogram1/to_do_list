@@ -79,7 +79,7 @@ h2 {
 
 h3 {
   font-size: 1.5em;
-  margin-top: 30px;
+  margin: 30px 0;
 }
 
 p {
@@ -288,6 +288,7 @@ ul.radio {
 .users {
   list-style: none;
   margin: 0;
+  padding: 0;
   li {
     overflow: auto;
     padding: 10px 0;
@@ -298,7 +299,7 @@ ul.radio {
 /* tasks */
 
 section.tasks {
-  margin-top: 45px;
+  margin-top: 40px;
 }
 
 .tab-content {
@@ -313,7 +314,7 @@ section.tasks {
       display: block;
     }
     li {
-      padding: 25px 0;
+      margin-bottom: 50px;
     }
   }
 }
@@ -336,6 +337,9 @@ section.tasks {
   display: inline-block;
   vertical-align: middle;
   padding-left: 15px;
+  .delete {
+    font-size: 1.2rem;
+  }
 }
 
 .like {

@@ -5,10 +5,10 @@ class Task < ApplicationRecord
   default_scope -> { order(priority: :desc, created_at: :desc) }
   validates :user_id, presence: true
   validates :content, presence: true, length: { maximum: 30 }
-  validates :done, inclusion: {in: [true, false]}
+  validates :done, inclusion: { in: [true, false] }
   validates :priority, presence: true, numericality: { less_than_or_equal_to: 3 }
 
-
+  
   # タスクをいいねする
   def iine(user)
     likes.create(user_id: user.id)
